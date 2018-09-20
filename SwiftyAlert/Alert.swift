@@ -207,17 +207,15 @@ public class Alert {
      - parameter completion : Called when did show UIAlertController.
      */
     public func show(animated: Bool = true, completion: (() -> Void)? = nil) {
-        if let vc = UIApplication.shared.keyWindow?.rootViewController {
-            DispatchQueue.main.async {
-                //                vc.present(self.controller, animated: animated, completion: completion)
-                let win = UIWindow(frame: UIScreen.main.bounds)
-                let vc = UIViewController()
-                vc.view.backgroundColor = .clear
-                win.rootViewController = vc
-                win.windowLevel = UIWindowLevelAlert + 1
-                win.makeKeyAndVisible()
-                vc.present(self.controller, animated: true, completion: nil)
-            }
+        DispatchQueue.main.async {
+            //                vc.present(self.controller, animated: animated, completion: completion)
+            let win = UIWindow(frame: UIScreen.main.bounds)
+            let vc = UIViewController()
+            vc.view.backgroundColor = .clear
+            win.rootViewController = vc
+            win.windowLevel = UIWindowLevelAlert + 1
+            win.makeKeyAndVisible()
+            vc.present(self.controller, animated: true, completion: nil)
         }
     }
 
